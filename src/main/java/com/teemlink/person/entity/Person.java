@@ -2,12 +2,29 @@ package com.teemlink.person.entity;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
+/**
+ * 实体类
+ * 
+ * @author ahan
+ *
+ */
 public class Person {
+
+  public Person() {
+  }
+
+  public Person(Long id, String name, Integer age) {
+    super();
+    this.id = id;
+    this.name = name;
+    this.age = age;
+  }
+
   private Long id;
   private String name;
-  private Long age;
+  private Integer age;
 
   public Long getId() {
     return id;
@@ -25,11 +42,11 @@ public class Person {
     this.name = name;
   }
 
-  public Long getAge() {
+  public Integer getAge() {
     return age;
   }
 
-  public void setAge(Long age) {
+  public void setAge(Integer age) {
     this.age = age;
   }
 
@@ -40,12 +57,12 @@ public class Person {
 
   @Override
   public boolean equals(Object obj) {
-    return EqualsBuilder.reflectionEquals(this, obj);
+    return EqualsBuilder.reflectionEquals(obj, this);
   }
 
   @Override
   public String toString() {
-    return ToStringBuilder.reflectionToString(this);
+    return ReflectionToStringBuilder.toString(this);
   }
 
 }

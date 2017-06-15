@@ -15,9 +15,11 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.context.WebApplicationContext;
 
 import com.teemlink.person.entity.Person;
 import com.teemlink.person.repository.PersonRepository;
@@ -25,6 +27,8 @@ import com.teemlink.person.repository.PersonRepository;
 import base.AbstractContextControllerTests;
 
 @RunWith(SpringJUnit4ClassRunner.class)
+@ActiveProfiles("local")
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 public class PersonControllerTest extends AbstractContextControllerTests {
 
   @Autowired
@@ -34,16 +38,16 @@ public class PersonControllerTest extends AbstractContextControllerTests {
 
   @Before
   public void setup() {
-    this.mockMvc = MockMvcBuilders.webAppContextSetup(this.webApplicationContext).build();
+    this.mockMvc = MockMvcBuilders.webAppContextSetup((WebApplicationContext) applicationContext)
+        .build();
   }
 
   @Test
   public void contextTest() {
-    Assert.assertNotNull(webApplicationContext);
+    Assert.assertNotNull(applicationContext);
   }
 
   @Test
-  @DirtiesContext
   public void AllTests() throws Exception {
 
     // POST: /person?name=ahan&age=12
@@ -93,11 +97,10 @@ public class PersonControllerTest extends AbstractContextControllerTests {
   }
 
   @Test
-  @DirtiesContext
   public void findById() throws Exception {
     Person person = new Person();
     person.setName("ahan2");
-    person.setAge(22L);
+    person.setAge(22);
     personRepository.save(person);
     System.out.println("id: " + personRepository.findAllpersons());
     this.mockMvc
@@ -110,14 +113,13 @@ public class PersonControllerTest extends AbstractContextControllerTests {
   }
 
   @Test
-  @DirtiesContext
   public void findAllPersons() throws Exception {
     Person person = new Person();
     person.setName("ahan8");
-    person.setAge(8L);
+    person.setAge(8);
     Person person2 = new Person();
     person2.setName("ahan7");
-    person2.setAge(7L);
+    person2.setAge(7);
     personRepository.save(person);
     personRepository.save(person2);
     System.out.println("all: " + personRepository.findAllpersons());
@@ -132,7 +134,6 @@ public class PersonControllerTest extends AbstractContextControllerTests {
   }
 
   @Test
-  @DirtiesContext
   public void createPerson() throws Exception {
     this.mockMvc
         .perform(post("/person").param("name", "ahan").param("age", "12")
@@ -152,11 +153,10 @@ public class PersonControllerTest extends AbstractContextControllerTests {
   }
 
   @Test
-  @DirtiesContext
   public void deletePerson() throws Exception {
     Person person = new Person();
     person.setName("ahan23");
-    person.setAge(223L);
+    person.setAge(223);
     personRepository.save(person);
     System.out.println("delete1: " + personRepository.findAllpersons());
     this.mockMvc
@@ -170,11 +170,10 @@ public class PersonControllerTest extends AbstractContextControllerTests {
   }
 
   @Test
-  @DirtiesContext
   public void updatePerson() throws Exception {
     Person person = new Person();
     person.setName("ahanhaha");
-    person.setAge(2234L);
+    person.setAge(2234);
     personRepository.save(person);
     System.out.println("update: " + personRepository.findAllpersons());
     this.mockMvc
@@ -185,14 +184,6 @@ public class PersonControllerTest extends AbstractContextControllerTests {
         .andExpect(jsonPath("$.id").value(0)).andExpect(jsonPath("$.name").value("ahan"))
         .andExpect(jsonPath("$.age").value(12));
 
-  }
-
-  public PersonRepository getPersonRepository() {
-    return personRepository;
-  }
-
-  public void setPersonRepository(PersonRepository personRepository) {
-    this.personRepository = personRepository;
   }
 
 }

@@ -1,43 +1,52 @@
 package com.teemlink.person.repository;
 
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-
-import org.springframework.stereotype.Repository;
 
 import com.teemlink.person.entity.Person;
 
-@Repository
-public class PersonRepository {
+/**
+ * 数据访问层，只定义接口，根据不同需要，实现不同的实现类。比如不同的数据库要按需加载。
+ * 
+ * @author ahan
+ *
+ */
+public interface PersonRepository {
+  /**
+   * 查询所有的 {@link Person}
+   * 
+   * @return
+   */
+  public Collection<Person> findAllpersons();
 
-  private Long count = 0l;
+  /**
+   * 根据 id 查询唯一的 {@link Person}
+   * 
+   * @param id
+   * @return
+   */
+  public Person findById(Long id);
 
-  private static Map<Long, Person> persons = new HashMap<Long, Person>();
+  /**
+   * 保存 {@link Person}
+   * 
+   * @param person
+   * @return
+   */
+  public Person save(Person person);
 
-  public Collection<Person> findAllpersons() {
-    return persons.values();
-  }
+  /**
+   * 根据 id 更新 {@link Person}
+   * 
+   * @param person
+   * @return
+   */
+  public Person update(Person person);
 
-  public Person findById(Long id) {
-    return persons.get(id);
-  }
-
-  public Person save(Person person) {
-    if (person == null)
-      return null;
-    if (person.getId() == null) {
-      person.setId(count++);
-    }
-    persons.put(person.getId(), person);
-    return person;
-  }
-
-  public Person update(Person person) {
-    return save(person);
-  }
-
-  public Person deleteById(Long id) {
-    return persons.remove(id);
-  }
+  /**
+   * 根据 id 删除 {@link Person}
+   * 
+   * @param id
+   * @return
+   */
+  public Person deleteById(Long id);
 }

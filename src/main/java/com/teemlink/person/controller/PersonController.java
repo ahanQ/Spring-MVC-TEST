@@ -29,7 +29,7 @@ public class PersonController {
   }
 
   @PostMapping(path = "/person", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-  public Person createPerson(@RequestParam String name, @RequestParam Long age) {
+  public Person createPerson(@RequestParam String name, @RequestParam Integer age) {
     Person person = new Person();
     person.setName(name);
     person.setAge(age);
@@ -38,7 +38,7 @@ public class PersonController {
 
   @PutMapping(path = "/person/{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
   public Person updatePerson(@PathVariable Long id, @RequestParam String name,
-      @RequestParam Long age) {
+      @RequestParam Integer age) {
     Person person = personRepository.findById(id);
     if (person == null) {
       person = new Person();
