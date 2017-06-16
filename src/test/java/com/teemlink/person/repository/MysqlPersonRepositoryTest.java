@@ -4,27 +4,36 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.RandomUtils;
+import org.apache.commons.text.CharacterPredicates;
+import org.apache.commons.text.RandomStringGenerator;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Repeat;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 
 import com.teemlink.person.entity.Person;
 
-import spring.config.AppConfig;
+import base.AbstractRepositoryTests;
 
+/**
+ * {@link MysqlPersonRepository} 测试，直接从 {@link AbstractRepositoryTests}
+ * 继承以启用测试。<br/>
+ * 添加 {@link ActiveProfiles} 注解并设置其值为 mysql
+ * 
+ * @author ahan
+ *
+ */
 @ActiveProfiles("mysql")
-@ContextConfiguration(classes = { AppConfig.class })
-public class MysqlPersonRepositoryTest extends AbstractTransactionalJUnit4SpringContextTests {
+public final class MysqlPersonRepositoryTest extends AbstractRepositoryTests {
 
   @Autowired
   private PersonRepository personRepository;
+
+  private RandomStringGenerator rsg = new RandomStringGenerator.Builder().withinRange('A', 'z')
+      .filteredBy(CharacterPredicates.LETTERS).build();
 
   private static Map<Long, Person> allPerson;
 
@@ -55,7 +64,7 @@ public class MysqlPersonRepositoryTest extends AbstractTransactionalJUnit4Spring
     }
     Person person = new Person();
     person.setAge(RandomUtils.nextInt(10, 100));
-    person.setName(RandomStringUtils.random(RandomUtils.nextInt(4, 10), true, false));
+    person.setName(rsg.generate(RandomUtils.nextInt(4, 10)));
     person.setId(RandomUtils.nextLong());
     personRepository.save(person);
   }
@@ -74,7 +83,7 @@ public class MysqlPersonRepositoryTest extends AbstractTransactionalJUnit4Spring
   public void save() {
     Person person = new Person();
     person.setAge(RandomUtils.nextInt(10, 100));
-    person.setName(RandomStringUtils.random(RandomUtils.nextInt(4, 10), true, false));
+    person.setName(rsg.generate(RandomUtils.nextInt(4, 10)));
     person.setId(RandomUtils.nextLong());
     personRepository.save(person);
   }

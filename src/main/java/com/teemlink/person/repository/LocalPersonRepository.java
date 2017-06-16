@@ -15,7 +15,7 @@ public class LocalPersonRepository implements PersonRepository {
 
   private Long count = 0l;
 
-  private static Map<Long, Person> persons = new HashMap<Long, Person>();
+  private Map<Long, Person> persons = new HashMap<Long, Person>();
 
   public Collection<Person> findAllpersons() {
     return persons.values();

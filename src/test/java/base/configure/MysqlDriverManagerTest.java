@@ -6,14 +6,19 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 import org.springframework.transaction.PlatformTransactionManager;
 
-import spring.config.AppConfig;
+import base.AbstractRepositoryTests;
 
-@ContextConfiguration(classes = { AppConfig.class })
-public class MysqlDriverManagerTest extends AbstractTransactionalJUnit4SpringContextTests {
+/**
+ * {@link AbstractTransactionalJUnit4SpringContextTests} 需要在 Spring 上下文环境中加载
+ * {@link JdbcTemplate} 和 {@link PlatformTransactionManager}
+ * 
+ * @author ahan
+ *
+ */
+public final class MysqlDriverManagerTest extends AbstractRepositoryTests {
 
   @Autowired
   private DataSource dataSource;

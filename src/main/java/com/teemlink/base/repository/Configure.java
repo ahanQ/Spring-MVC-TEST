@@ -14,7 +14,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 public class Configure {
 
   /**
-   * 实际上为mysql的{@link DataSource} TODO 需要修改
+   * 实际上为mysql的{@link DataSource}
    * 
    * @return
    */
@@ -27,8 +27,8 @@ public class Configure {
   }
 
   /**
-   * {@link AbstractTransactionalJUnit4SpringContextTests}需要在 Spring 上下文环境中加载
-   * JdbcTemplate
+   * {@link AbstractTransactionalJUnit4SpringContextTests} 需要在 Spring 上下文环境中加载
+   * {@link JdbcTemplate}
    * 
    * @param dataSource
    * @return
