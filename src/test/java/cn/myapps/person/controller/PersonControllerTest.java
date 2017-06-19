@@ -1,4 +1,4 @@
-package com.teemlink.person.controller;
+package cn.myapps.person.controller;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -19,10 +19,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.teemlink.person.entity.Person;
-import com.teemlink.person.repository.PersonRepository;
-
 import base.AbstractControllerTests;
+import cn.myapps.person.entity.Person;
+import cn.myapps.person.repository.PersonRepository;
 
 @ActiveProfiles("local")
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)

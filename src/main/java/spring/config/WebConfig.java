@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "com.teemlink.**.controller", includeFilters = @Filter(classes = EnableWebMvc.class))
+@ComponentScan(basePackages = "cn.myapps.**.controller", includeFilters = @Filter(classes = EnableWebMvc.class))
 public class WebConfig extends WebMvcConfigurerAdapter {
 
   @Override

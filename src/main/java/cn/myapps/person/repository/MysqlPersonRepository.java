@@ -1,4 +1,4 @@
-package com.teemlink.person.repository;
+package cn.myapps.person.repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,7 +10,7 @@ import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import com.teemlink.person.entity.Person;
+import cn.myapps.person.entity.Person;
 
 /**
  * Mysql数据库访问的{@link PersonRepository}的实现类

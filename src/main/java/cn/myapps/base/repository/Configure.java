@@ -1,4 +1,4 @@
-package com.teemlink.base.repository;
+package cn.myapps.base.repository;
 
 import javax.sql.DataSource;
 

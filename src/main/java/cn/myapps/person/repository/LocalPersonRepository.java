@@ -1,4 +1,4 @@
-package com.teemlink.person.repository;
+package cn.myapps.person.repository;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -7,7 +7,7 @@ import java.util.Map;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
-import com.teemlink.person.entity.Person;
+import cn.myapps.person.entity.Person;
 
 @Repository
 @Profile("local")

@@ -1,4 +1,4 @@
-package com.teemlink.person.repository;
+package cn.myapps.person.repository;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -14,9 +14,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Repeat;
 import org.springframework.test.context.ActiveProfiles;
 
-import com.teemlink.person.entity.Person;
-
 import base.AbstractRepositoryTests;
+import cn.myapps.person.entity.Person;
+import cn.myapps.person.repository.MysqlPersonRepository;
+import cn.myapps.person.repository.PersonRepository;
 
 /**
  * {@link MysqlPersonRepository} 测试，直接从 {@link AbstractRepositoryTests}

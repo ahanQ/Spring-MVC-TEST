@@ -1,8 +1,8 @@
-package com.teemlink.person.repository;
+package cn.myapps.person.repository;
 
 import java.util.Collection;
 
-import com.teemlink.person.entity.Person;
+import cn.myapps.person.entity.Person;
 
 /**
  * 数据访问层，只定义接口，根据不同需要，实现不同的实现类。比如不同的数据库要按需加载。

@@ -1,12 +1,12 @@
-package com.teemlink.person.controller;
+package cn.myapps.person.controller;
 
 import java.util.Collection;
 
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import com.teemlink.person.entity.Person;
-import com.teemlink.person.repository.PersonRepository;
+import cn.myapps.person.entity.Person;
+import cn.myapps.person.repository.PersonRepository;
 
 @RestController
 public class PersonController {

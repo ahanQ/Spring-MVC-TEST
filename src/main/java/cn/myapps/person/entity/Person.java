@@ -1,4 +1,4 @@
-package com.teemlink.person.entity;
+package cn.myapps.person.entity;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
