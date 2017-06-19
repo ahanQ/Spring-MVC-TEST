@@ -17,6 +17,11 @@
 		org.springframework.web.context.support.AnnotationConfigWebApplicationContext
 		</param-value>
 	</context-param>
+	<!-- 指定默认的 profiles 配置 -->
+	<context-param>
+		<param-name>spring.profiles.default</param-name>
+		<param-value>mysql</param-value>
+	</context-param>
 	
 	<!-- 指定根配置类 -->
 	<context-param>
@@ -50,6 +55,11 @@
 			<param-value>
 				spring.config.WebConfig
 			</param-value>
+		</init-param>
+		<!-- 指定默认的 profiles 配置 -->
+		<init-param>
+			<param-name>spring.profiles.default</param-name>
+			<param-value>mysql</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>

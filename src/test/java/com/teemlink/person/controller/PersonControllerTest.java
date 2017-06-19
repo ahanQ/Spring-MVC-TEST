@@ -1,4 +1,4 @@
-package person.controller;
+package com.teemlink.person.controller;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
