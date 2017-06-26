@@ -1,5 +1,6 @@
 package base;
 
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 
@@ -14,7 +15,6 @@ import spring.config.AppConfig;
  *
  */
 @ContextConfiguration(classes = { AppConfig.class })
-// @ActiveProfiles("mysql")
 public abstract class AbstractRepositoryTests
     extends AbstractTransactionalJUnit4SpringContextTests {
 

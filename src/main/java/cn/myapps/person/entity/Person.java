@@ -3,6 +3,7 @@ package cn.myapps.person.entity;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.springframework.stereotype.Component;
 
 /**
  * 实体类

@@ -13,11 +13,11 @@ public class DataSources {
   public static DataSource dataSource;
   static {
     dataSource1 = new DriverManagerDataSource(
-        "jdbc:mysql://localhost:3307/spring?useUnicode=true&characterEncoding=utf8", "root", "");
+        "jdbc:mysql://localhost:3306/spring?useUnicode=true&characterEncoding=utf8", "root", "123456");
     dataSource1.setDriverClassName("com.mysql.jdbc.Driver");
     dataSource2 = new DriverManagerDataSource(
-        "jdbc:mysql://localhost:3307/another_spring?useUnicode=true&characterEncoding=utf8", "root",
-        "");
+        "jdbc:mysql://localhost:3306/another_spring?useUnicode=true&characterEncoding=utf8", "root",
+        "123456");
     dataSource2.setDriverClassName("com.mysql.jdbc.Driver");
     if (RandomUtils.nextBoolean()) {
       System.out.println("dataSource1: " + DataSources.dataSource1);
@@ -29,4 +29,14 @@ public class DataSources {
 
   }
 
+  public DataSource getDataSource(String key){
+	  if("1".equals(key)){
+	      dataSource = DataSources.dataSource1;
+	  } else {
+	      dataSource = DataSources.dataSource2;
+	  }
+	  System.out.println("DataSource Change: " + DataSources.dataSource);
+	  return dataSource;
+  }
+  
 }

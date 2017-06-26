@@ -25,8 +25,8 @@ import cn.myapps.person.entity.Person;
  * @author ahan
  *
  */
-@ActiveProfiles("mysql")
-public final class MysqlPersonRepositoryTest extends AbstractRepositoryTests {
+@ActiveProfiles("connect")
+public final class ConnectionPersonRepositoryTest extends AbstractRepositoryTests {
 
   @Autowired
   private PersonRepository personRepository;
@@ -57,11 +57,6 @@ public final class MysqlPersonRepositoryTest extends AbstractRepositoryTests {
       Assert.assertEquals(expectedPerson.getName(), person.getName());
       Assert.assertEquals(expectedPerson.getAge().longValue(), person.getAge().longValue());
     }
-    Person person = new Person();
-    person.setAge(RandomUtils.nextInt(10, 100));
-    person.setName(rsg.generate(RandomUtils.nextInt(4, 10)));
-    person.setId(RandomUtils.nextLong());
-    personRepository.save(person);
   }
 
   @Test

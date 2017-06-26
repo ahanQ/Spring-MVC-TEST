@@ -7,7 +7,6 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.stereotype.Repository;
 
 import cn.myapps.person.entity.Person;
 
@@ -17,8 +16,6 @@ import cn.myapps.person.entity.Person;
  * @author ahan
  *
  */
-@Repository
-// @Profile({ "mysql", "anothermysql" })
 public class MysqlPersonRepository implements PersonRepository {
 
   private static final String INSERT = "insert into person (id, name, age) values (?, ?, ?)";
