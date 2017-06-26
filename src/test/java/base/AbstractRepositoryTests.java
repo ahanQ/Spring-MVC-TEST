@@ -14,6 +14,7 @@ import spring.config.AppConfig;
  *
  */
 @ContextConfiguration(classes = { AppConfig.class })
+// @ActiveProfiles("mysql")
 public abstract class AbstractRepositoryTests
     extends AbstractTransactionalJUnit4SpringContextTests {
 

@@ -20,7 +20,6 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.test.annotation.Repeat;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -36,7 +35,7 @@ import cn.myapps.person.repository.PersonRepository;
  * @author ahan
  *
  */
-@ActiveProfiles("mysql")
+// @ActiveProfiles("mysql")
 public final class PersonControllerTest extends AbstractControllerTests {
 
   @Autowired

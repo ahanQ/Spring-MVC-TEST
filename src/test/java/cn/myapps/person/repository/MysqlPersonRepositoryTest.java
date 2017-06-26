@@ -8,7 +8,7 @@ import org.apache.commons.lang3.RandomUtils;
 import org.apache.commons.text.CharacterPredicates;
 import org.apache.commons.text.RandomStringGenerator;
 import org.junit.Assert;
-import org.junit.BeforeClass;
+import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Repeat;
@@ -25,7 +25,6 @@ import cn.myapps.person.entity.Person;
  * @author ahan
  *
  */
-@ActiveProfiles("mysql")
 public final class MysqlPersonRepositoryTest extends AbstractRepositoryTests {
 
   @Autowired
@@ -34,21 +33,17 @@ public final class MysqlPersonRepositoryTest extends AbstractRepositoryTests {
   private RandomStringGenerator rsg = new RandomStringGenerator.Builder().withinRange('A', 'z')
       .filteredBy(CharacterPredicates.LETTERS).build();
 
-  private static Map<Long, Person> allPerson;
+  private Map<Long, Person> allPerson;
 
-  @BeforeClass
-  public static void init() {
-    allPerson = new HashMap<Long, Person>();
-    allPerson.put(0L, new Person(0L, "ahan", 18));
-    allPerson.put(93861369773759488L, new Person(93861369773759488L, "HxHKCu", 88));
-    allPerson.put(1598465293393452032L, new Person(1598465293393452032L, "jhTM", 47));
-    allPerson.put(1776370164197006336L, new Person(1776370164197006336L, "TjDAldq", 22));
-    allPerson.put(5461604025189477376L, new Person(5461604025189477376L, "FOnCyrLS", 58));
-    allPerson.put(6624002592547291136L, new Person(6624002592547291136L, "KHTvHtWH", 43));
-    allPerson.put(7911526969920167936L, new Person(7911526969920167936L, "KpkyYW", 66));
-    allPerson.put(8174430517177737216L, new Person(8174430517177737216L, "PecMlMPF", 68));
-    allPerson.put(8354522141506979840L, new Person(8354522141506979840L, "zbIUkG", 73));
-    allPerson.put(8580730913348161536L, new Person(8580730913348161536L, "imlRJTH", 66));
+  @Before
+  public void init() {
+    if (allPerson == null) {
+      allPerson = new HashMap<Long, Person>();
+    }
+    Collection<Person> persons = personRepository.findAllpersons();
+    for (Person person : persons) {
+      allPerson.put(person.getId(), person);
+    }
   }
 
   @Test
