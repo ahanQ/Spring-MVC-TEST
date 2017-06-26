@@ -16,8 +16,6 @@ import org.springframework.test.context.ActiveProfiles;
 
 import base.AbstractRepositoryTests;
 import cn.myapps.person.entity.Person;
-import cn.myapps.person.repository.MysqlPersonRepository;
-import cn.myapps.person.repository.PersonRepository;
 
 /**
  * {@link MysqlPersonRepository} 测试，直接从 {@link AbstractRepositoryTests}
@@ -91,7 +89,8 @@ public final class MysqlPersonRepositoryTest extends AbstractRepositoryTests {
 
   @Test
   public void update() {
-    Person person = personRepository.update(new Person(5461604025189477376L, "FnCyrLS", 48));
+    Person person = personRepository.update(5461604025189477376L,
+        new Person(5461604025189477376L, "FnCyrLS", 48));
     Assert.assertNotNull(person);
     Assert.assertEquals(5461604025189477376L, person.getId().longValue());
     Assert.assertEquals("FnCyrLS", person.getName());
@@ -103,7 +102,8 @@ public final class MysqlPersonRepositoryTest extends AbstractRepositoryTests {
     Assert.assertEquals("FnCyrLS", person.getName());
     Assert.assertEquals(48, person.getAge().longValue());
 
-    person = personRepository.update(new Person(5461604025189477376L, "FOnCyrLS", 58));
+    person = personRepository.update(5461604025189477376L,
+        new Person(5461604025189477376L, "FOnCyrLS", 58));
     Assert.assertNotNull(person);
     Assert.assertEquals(5461604025189477376L, person.getId().longValue());
     Assert.assertEquals("FOnCyrLS", person.getName());

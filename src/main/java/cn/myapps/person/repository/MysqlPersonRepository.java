@@ -63,8 +63,8 @@ public class MysqlPersonRepository implements PersonRepository {
     return person;
   }
 
-  public Person update(Person person) {
-    int rowNum = jdbcOperations.update(UPDATE, person.getName(), person.getAge(), person.getId());
+  public Person update(Long id, Person person) {
+    int rowNum = jdbcOperations.update(UPDATE, person.getName(), person.getAge(), id);
     if (rowNum != 1) {
       return null;
     }

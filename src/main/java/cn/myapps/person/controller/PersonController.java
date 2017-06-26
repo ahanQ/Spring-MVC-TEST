@@ -2,6 +2,8 @@ package cn.myapps.person.controller;
 
 import java.util.Collection;
 
+import org.apache.commons.lang3.RandomUtils;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,23 +31,15 @@ public class PersonController {
   }
 
   @PostMapping(path = "/person", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+  @ResponseStatus(HttpStatus.CREATED)
   public Person createPerson(@RequestParam String name, @RequestParam Integer age) {
-    Person person = new Person();
-    person.setName(name);
-    person.setAge(age);
-    return personRepository.save(person);
+    return personRepository.save(new Person(RandomUtils.nextLong(), name, age));
   }
 
   @PutMapping(path = "/person/{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
   public Person updatePerson(@PathVariable Long id, @RequestParam String name,
       @RequestParam Integer age) {
-    Person person = personRepository.findById(id);
-    if (person == null) {
-      person = new Person();
-    }
-    person.setName(name);
-    person.setAge(age);
-    return personRepository.save(person);
+    return personRepository.update(id, new Person(id, name, age));
   }
 
   @DeleteMapping(path = "/person/{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)

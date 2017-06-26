@@ -37,10 +37,11 @@ public interface PersonRepository {
   /**
    * 根据 id 更新 {@link Person}
    * 
+   * @param id
    * @param person
    * @return
    */
-  public Person update(Person person);
+  public Person update(Long id, Person person);
 
   /**
    * 根据 id 删除 {@link Person}
